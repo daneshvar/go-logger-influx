@@ -67,6 +67,8 @@ func (i *Influx) Print(l logger.Level, s string, caller string, stack []string, 
 		fields["stack"] = strings.Join(stack, "\r\n")
 	}
 
+	jsonString, _ := json.Marshal(fields)
+
 	// create point
 	p := influxdb.NewPoint(
 		measurement,
@@ -75,7 +77,9 @@ func (i *Influx) Print(l logger.Level, s string, caller string, stack []string, 
 			"scope": s,
 			"level": logger.LevelText(l),
 		},
-		fields,
+		map[string]interface{}{
+			"values": jsonString,
+		},
 		time.Now())
 
 	// write asynchronously
@@ -127,6 +131,8 @@ func (i *Influx) Prints(l logger.Level, s string, caller string, stack []string,
 		fields["stack"] = strings.Join(stack, "\r\n")
 	}
 
+	jsonString, _ := json.Marshal(fields)
+
 	// create point
 	p := influxdb.NewPoint(
 		measurement,
@@ -135,7 +141,9 @@ func (i *Influx) Prints(l logger.Level, s string, caller string, stack []string,
 			"scope": s,
 			"level": logger.LevelText(l),
 		},
-		fields,
+		map[string]interface{}{
+			"values": jsonString,
+		},
 		time.Now())
 
 	// write asynchronously
