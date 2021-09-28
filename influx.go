@@ -162,9 +162,9 @@ func (i *Influx) addKeyValues(fields map[string]interface{}, keysValues []interf
 
 	for i := 0; i < lenValues; i += 2 {
 		if i+1 < lenValues {
-			fields[fmt.Sprintf("%v", keysValues[i])] = keysValues[i+1]
+			fields[fmt.Sprint(keysValues[i])] = fmt.Sprint(keysValues[i+1])
 		} else {
-			fields[fmt.Sprintf("%v", keysValues[i])] = "!VALUE"
+			fields[fmt.Sprint(keysValues[i])] = "!VALUE"
 		}
 	}
 }
