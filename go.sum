@@ -5,6 +5,8 @@ github.com/daneshvar/go-logger v1.11.1 h1:veK0ofSZKAeOZmZA5Mqp5daDFPhQ0Uu5rUCwUF
 github.com/daneshvar/go-logger v1.11.1/go.mod h1:xaB6a53oMelyQNv9byuFTFcfzrWVaWD4bz//OC3fgkY=
 github.com/daneshvar/go-logger v1.12.0 h1:9ROl0cMdLV8A8e4xYWPWwkZpXamOJaaTOwY0VML6It4=
 github.com/daneshvar/go-logger v1.12.0/go.mod h1:xaB6a53oMelyQNv9byuFTFcfzrWVaWD4bz//OC3fgkY=
+github.com/daneshvar/go-logger v1.12.1 h1:z+nKpQT2nvoxpmp0ckVYv6D4PusOVVnQw6UkR9r+uAo=
+github.com/daneshvar/go-logger v1.12.1/go.mod h1:xaB6a53oMelyQNv9byuFTFcfzrWVaWD4bz//OC3fgkY=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
