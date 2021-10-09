@@ -1,4 +1,4 @@
-package logger
+package loggerinflux
 
 import (
 	"encoding/json"
@@ -20,7 +20,7 @@ type Influx struct {
 	app      string
 }
 
-func InfluxWriter(serverURL string, authToken string, org string, bucket string, app string, caller bool, stack logger.EnablerFunc, enabler logger.EnablerFunc) *logger.Writer {
+func Writer(serverURL string, authToken string, org string, bucket string, app string, caller bool) *logger.Writer {
 	encoder := &Influx{
 		// pool: sync.Pool{New: func() interface{} {
 		// 	b := bytes.NewBuffer(make([]byte, 150)) // buffer init with 150 size
@@ -31,7 +31,23 @@ func InfluxWriter(serverURL string, authToken string, org string, bucket string,
 	}
 	encoder.Connect(serverURL, authToken, org, bucket)
 
-	return logger.NewWriter(enabler, stack, caller, encoder)
+	return logger.NewWriter(caller, encoder)
+}
+
+func WriterWithConfig(c *Config) (*logger.Writer, error) {
+	caller := true
+
+	if c.Caller != nil {
+		caller = *c.Caller
+	}
+
+	w := Writer(c.URL, c.Token, c.Org, c.Bucket, c.AppName, caller)
+
+	if err := w.Config(c.Scope, c.Level, c.Stack); err != nil {
+		return nil, err
+	}
+
+	return w, nil
 }
 
 func (i *Influx) Connect(serverURL string, authToken string, org string, bucket string) {
